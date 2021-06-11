@@ -11,7 +11,7 @@
 ##
 ## Writer: KyungJin Sohn
 ## Date: 06.01.2020
-## Last modified: 06.07.2021
+## Last modified: 06.11.2021
 ################################################################################
 cal_robustness_score <- function(args) {
         
@@ -149,7 +149,7 @@ cal_robustness_score <- function(args) {
         }
         
         
-        gz1 <- gzfile(paste("./result/Score_", args$fileName, 
+        gz1 <- gzfile(paste("./scoreResult/Score_", args$fileName, 
                             ".csv.gz", sep = ""), "w")
         write.csv(entireData, gz1)
         close(gz1)
