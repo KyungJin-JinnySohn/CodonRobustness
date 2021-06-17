@@ -18,10 +18,13 @@ cateBonto_NucleotideID <- function(species, key){
                 # 1. Install the needed library
         if (!requireNamespace("BiocManager", quietly = TRUE)){
                 install.packages("BiocManager")
+        }
+        if (!require("AnnotationHub", character.only = TRUE)) {
                 BiocManager::install("AnnotationHub")
         }
-        if(!require(dplyr)) 
+        if(!require(dplyr)) {
                 install.packages('dplyr',repos = "http://cran.us.r-project.org")
+        }
         library(AnnotationHub)
         library(dplyr)
         

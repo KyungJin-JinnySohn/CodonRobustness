@@ -15,16 +15,17 @@
 cateBonto_Celegans <- function(species = "Celegans"){
         # 1. Install the needed library
         if (!requireNamespace("BiocManager", quietly = TRUE)) {
-                install.packages("BiocManager", 
-                                 repos = "http://cran.us.r-project.org")
+                install.packages("BiocManager")
         }
         if (!require("Biostrings", character.only = TRUE)) {
                 BiocManager::install("Biostrings")
         }
-        if(!require(seqinr)) 
+        if(!require(seqinr)) {
                 install.packages('seqinr',repos = "http://cran.us.r-project.org")
-        if(!require(dplyr)) 
+        }
+        if(!require(dplyr)) {
                 install.packages('dplyr',repos = "http://cran.us.r-project.org")
+        }
         library(Biostrings)
         library(seqinr)
         library(dplyr)
