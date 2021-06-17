@@ -17,6 +17,8 @@ cateBonto_Celegans <- function(species = "Celegans"){
         if (!requireNamespace("BiocManager", quietly = TRUE)) {
                 install.packages("BiocManager", 
                                  repos = "http://cran.us.r-project.org")
+        }
+        if (!require("Biostrings", character.only = TRUE)) {
                 BiocManager::install("Biostrings")
         }
         if(!require(seqinr)) 
