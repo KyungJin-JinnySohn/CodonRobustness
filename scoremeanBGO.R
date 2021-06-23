@@ -1,6 +1,6 @@
 ################################################################################
 ## scoremeanBGO
-## : Compute score for each GO means
+## : Compute score means for each GO 
 ##
 ## Function Needed
 ## : subNmodi_scoreONTO.R
@@ -21,7 +21,6 @@ scoremeanBGO <- function(species, ONTO) {
         source("subNmodi_scoreONTO.R")
         
         
-        #scoreData <- subNmodi_scoreONTO("HomoSapiens", "BP")
                 # 2. read the (species)_Score_(ONTO) data
         scoreData <- subNmodi_scoreONTO(species, ONTO)
         
