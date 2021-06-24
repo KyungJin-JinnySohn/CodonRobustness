@@ -6,7 +6,7 @@
 ## : .
 ##
 ## Example of Arguments
-## : scoremeanBGO("HomoSapiens", "BP")
+## : subNmodi_scoreONTO("HomoSapiens", "BP")
 ##
 ## Writer: KyungJin Sohn
 ## Date: 07.06.2020
