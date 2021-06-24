@@ -12,7 +12,6 @@
 ## Date: 07.06.2020
 ## Last modified: 06.15.2021
 ################################################################################
-
 scoremeanBGO <- function(species, ONTO) {
                 # 1. Install the needed library
         if(!require(dplyr)) 
