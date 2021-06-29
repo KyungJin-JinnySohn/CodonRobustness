@@ -32,9 +32,9 @@ plot_histoBGO <- function(species, selectedGO, scoreDatatGO, groupName) {
         
                 # 2. Read score data of random sequence
         seed <- 1111 # change when there are more than one random data
-        type <- "GC" # change if you want to use diff. type of random data
+        randomType <- "GC" # change if you want to use diff. type of random data
         random_scoreData <- subNmodi_score(
-                paste0("random/Score_", species, "_random", type, "_", seed))
+                paste0("random/Score_", species, "_random", randomType, "_", seed))
         
         
                 # 3. Filter out the selected GO term score_data
