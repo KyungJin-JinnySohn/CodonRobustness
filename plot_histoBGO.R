@@ -79,9 +79,11 @@ plot_histoBGO <- function(species, selectedGO, scoreDatatGO, groupName) {
                                           guide = "none")
         }
         
+                        # title
         title <- textGrob(paste0("Histogram of genes containg ", groupName), 
                           gp = gpar(fontsize = 30))
         
+                        # legend
         legend_hist <- g +
                 scale_fill_manual("Histogram Legend",
                                   values = c("Random" = "white", 
@@ -97,6 +99,7 @@ plot_histoBGO <- function(species, selectedGO, scoreDatatGO, groupName) {
                                           nrow = 1))
         legend <- get_legend(legend_hist)
         
+                        # arrange plot
         girdPlots <- arrangeGrob(plots[[1]], plots[[2]], plots[[3]], plots[[4]],
                                  legend, nrow = 3, top = title, 
                                  padding = unit(5, "line"))
@@ -106,7 +109,8 @@ plot_histoBGO <- function(species, selectedGO, scoreDatatGO, groupName) {
         if (!dir.exists(paste0(getwd(), "/plot/histogram/", species, "/"))) {
                 dir.create(paste0("./plot/histogram/", species, "/"))
         }
-        ggsave(paste0(getwd(), "/plot/histogram/", species, "/", groupName, "_GOHisto.png"),
+        ggsave(paste0(getwd(), "/plot/histogram/", species, "/", 
+                      groupName, "_GOHisto.png"),
                width = 50, height = 40, units = "cm", girdPlots)
 }
 
