@@ -15,7 +15,7 @@
 ## Last modified: 07.01.2021
 ################################################################################
 draw_histoBgene_multi <- function(species, scores, randomType) {
-                # 1. Through an error if the length of the species vector is less than 2
+                # 1. Throw an error if the length of the species vector is less than 2
         if (length(species) < 2) {
                 stop("ERROR: Please select more than one species.")
         }
