@@ -108,7 +108,7 @@ plot_histoBgene <- function(scoreData, species, randomType) {
         
                         # arrange plot
         girdPlots <- arrangeGrob(plots[[1]], plots[[2]], plots[[3]], plots[[4]], 
-                                 legend,ncol = 2, top = title, 
+                                 legend, ncol = 2, top = title, 
                                  padding = unit(5, "line"))
         
         
