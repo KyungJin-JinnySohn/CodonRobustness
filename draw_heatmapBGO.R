@@ -1,6 +1,6 @@
 ################################################################################
 ## draw_heatmapBGO
-## : draw a heatmpa with categorized score data
+## : draw a heat map with score data categorized by ontology
 ## 
 ## Function Needed
 ## : subNmodi_scoreONTO.R, plot_heatmapBGO.R
@@ -14,7 +14,7 @@
 ## Date: 09.07.2020
 ## Last modified: 07.06.2021
 ################################################################################
-draw_heatmapBGO <- function(species, ONTO, indexType ) {
+draw_heatmapBGO <- function(species, ONTO, indexType) {
                 # 1. Throw an error if the length of the species vector is less than 2
         if (length(species) < 2) {
                 stop("ERROR: Please select more than one species.")   
