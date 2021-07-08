@@ -1,6 +1,6 @@
 ################################################################################
 ## plot_heatmapBGO
-## : draw a histogram based on genes for multiple scores at once
+## : draw a heat map based on GO of multiple species
 ##
 ## Function Needed
 ## : .
