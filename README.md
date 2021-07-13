@@ -4,7 +4,7 @@ This document is a simple guide about the "Comparative robustness analysis" proj
 
 - R : 4.1.0
 - RStudio : 1.4.1717
-- OS : Windows10    
+- OS : Windows10
     
 
 ## 1. Calculate robustness scores
@@ -185,4 +185,8 @@ The required functions to run *draw_interactiveplotBGO.R* function.
 
 - combine_survivalTestBGO.R : combine the survival test result data    
     
+
+## About
+- Writer: Kyungjin Sohn
+- Last updated: 07.13.2021
 
