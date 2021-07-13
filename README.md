@@ -2,9 +2,9 @@
 
 This document is a simple guide about the "Comparative robustness analysis" project. To execute all the code used in this project, the code must be in the correct directory. Please check the link before executing each code. Before entering a description, this project was developed in the following environment.
 
-    - R : 4.1.0
-    - RStudio : 1.4.1717
-    - OS : Windows10    
+- R : 4.1.0
+- RStudio : 1.4.1717
+- OS : Windows10    
     
 
 ## 1. Calculate robustness scores
@@ -13,7 +13,7 @@ First, we need to compute robustness scores using cDNA data. The data is in the 
 
 Run the first code named *main_01.R*. This function takes arguments and starts the calculation. If you need more description, run the following command on your server.
 
-```
+```{r eval=FALSE}
 Rscript main_01.R -h
 ```
 
@@ -25,9 +25,9 @@ nice -n19 Rscript main_01.R -i Scerevisiae.fasta.gz -o Scerevisiae -s Scerevisia
 
 The required functions to run *main_01.R* function.
 
-        - cal_robustness_score.R : calculate the robustness score of genes
-        - cal_REA4eAI.R : calculate the REA for a specific species
-        - cal_prob4eAI.R : calculate probability p(c'|c)    
+- cal_robustness_score.R : calculate the robustness score of genes
+- cal_REA4eAI.R : calculate the REA for a specific species
+- cal_prob4eAI.R : calculate probability p(c'|c)    
     
 
 ## 2. Categorize score data 
@@ -75,8 +75,7 @@ scoremeanBGO("HomoSapiens", "BP")
 ```
 To run this function  *scoremeanBGO.R*, another function is also needed.
 
-        - subNmodi_scoreONTO.R : 
-          subset from the categorized score data and modify score to standardize them    
+- subNmodi_scoreONTO.R : subset from the categorized score data and modify score to standardize them    
     
 
 #### 2) Draw a histogram\
@@ -87,11 +86,11 @@ draw_histoBGO("Scerevisiae", "MF")
 ```
 The function *draw_histoBGO.R* requires many other functions.
 
-        - subNmodi_scoreONTO.R : (described above)
-        - subNmodi_score.R : subset from the score data and modify score to standardize them
-        - sortGO.R : find GOs ranked in the top or bottom 10% 
-        - plot_histoBGO.R : draw a histogram according to GO terms and save it as a png file
-                            [*Need to change seed number and random data type if necessary]    
+- subNmodi_scoreONTO.R : (described above)
+- subNmodi_score.R : subset from the score data and modify score to standardize them
+- sortGO.R : find GOs ranked in the top or bottom 10% 
+- plot_histoBGO.R : draw a histogram according to GO terms and save it as a png file
+                    [*Need to change seed number and random data type if necessary]    
     
 
 ## 5. Draw a histogram by gene
@@ -102,11 +101,9 @@ draw_histoBgene("Dmelanogaster")
 ```
 The required functions to run *draw_histoBgene.R* function.
 
-        - subNmodi_score.R : (described above)
-        - plot_histoBgene.R : 
-          draw a histogram according to gene of the species and save it as a png file
-        - combine_random_data.R : 
-          combines data with different seed numbers among random score data of the same type    
+- subNmodi_score.R : (described above)
+- plot_histoBgene.R : draw a histogram according to gene of the species and save it as a png file
+- combine_random_data.R : combines data with different seed numbers among random score data of the same type    
     
 
 ## 6. Draw multiple histograms of different species by gene
@@ -126,10 +123,9 @@ draw_histoBgene_multi(
 
 The required functions to run *draw_histoBgene.R* function.
 
-        - plot_histoBgene_multi.R : 
-          draw a histogram according to gene of the species and return plots in a list form
-        - subNmodi_score.R : (described above)
-        - combine_random_data.R : (described above)    
+- plot_histoBgene_multi.R : draw a histogram according to gene of the species and return plots in a list form
+- subNmodi_score.R : (described above)
+- combine_random_data.R : (described above)    
     
 
 ## 7. Draw a heatmap
@@ -145,18 +141,16 @@ draw_heatmapBGO(c("HomoSapiens", "MusMusculus"), "MF", "score")
 
 The required functions to run *draw_heatmapBGO.R* function.
 
-        - plot_heatmapBGO.R : 
-          draw a heatmap based on common GOs of different species, and save the result 
-          in a PDF file
-        - subNmodi_scoreONTO.R : (described above)    
+- plot_heatmapBGO.R : draw a heatmap based on common GOs of different species, and save the result in a PDF file
+- subNmodi_scoreONTO.R : (described above)    
     
 
 ## 8. Survival Test
 
 First, the survival test selects GO that meets the following conditions: 
 
-    1) Select GOs with more than 30 sequences.
-    2) Select GOs with at least 5 sequences with sequence lengths between q40 and q60.
+1) Select GOs with more than 30 sequences.
+2) Select GOs with at least 5 sequences with sequence lengths between q40 and q60.
 
 Next, all sequences are then randomly given 100 different mutation scenarios. [= For one GO term, Number of sequences * 100 = Number of scenarios] The function uses BLOSUM62 matrix(as a default) to calculate the rate of difference between the original score. If the rate of difference is 0.8 or below, the sequence dies. [= score after the mutation/original score <= 0.8]
 
@@ -174,14 +168,11 @@ nice -n19 Rscript main_02.R -n HomoSapiens -o MF -m BLOSUM62 -s 1234
 
 The required functions to run *main_02.R* function.
 
-        - survivalTest_subMatrix.R : select GO Terms that meets the conditions from 
-          the categorized score data of the corresponding species and run survival tests
-        - survivalTest_filter.R : select GO Terms that meets the conditions from 
-          the categorized score data
-        - survivalTest_run.R : run survival tests
-        - change_CToAA.R : change a sequence of codons into amino acids
-        - cal_substitution_score.R : calculate a substitution score after 
-          one random mutation occurrence    
+- survivalTest_subMatrix.R : select GO Terms that meets the conditions from the categorized score data of the corresponding species and run survival tests
+- survivalTest_filter.R : select GO Terms that meets the conditions from the categorized score data
+- survivalTest_run.R : run survival tests
+- change_CToAA.R : change a sequence of codons into amino acids
+- cal_substitution_score.R : calculate a substitution score after one random mutation occurrence    
     
 
 ## 9. Draw an interactive plot
@@ -192,6 +183,6 @@ draw_interactiveplotBGO("HomoSapiens", "MF", "BLOSUM62", 1234)
 
 The required functions to run *draw_interactiveplotBGO.R* function.
 
-        - combine_survivalTestBGO.R : combine the survival test result data    
+- combine_survivalTestBGO.R : combine the survival test result data    
     
 
