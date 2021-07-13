@@ -48,16 +48,14 @@ draw_interactiveplotBGO <- function(species, ONTO, subMatrix, seed) {
                 mutate(term = Term(GO)) %>% 
                 arrange(desc(avg_sumScore))
         
-        idx <- c(1:26, 33:57)
-        idx <- idx[!idx %in% c(15, 16, 38)]
-        comResult <- combine_survivalTestBGO(GOData[idx, ]$GO,
+        comResult <- combine_survivalTestBGO(GOData$GO,
                                              species, ONTO, subMatrix, seed)
         survivalData <- comResult[[1]]
         survivedAUC <- comResult[[2]]
         
         
                 # 4. Join data
-        GOData_survived <- left_join(GOData[idx,], survivedAUC, by = "GO")
+        GOData_survived <- left_join(GOData, survivedAUC, by = "GO")
         
         allSurvivedData <- left_join(survivalData, GOData_survived, by = "GO")
         
@@ -69,7 +67,7 @@ draw_interactiveplotBGO <- function(species, ONTO, subMatrix, seed) {
                 arrange(desc(avg_sumScore))
         
         p <- allSurvivedData %>%
-                mutate(GO = factor(paste(GO, term), levels = GOData[idx,]$GO)) %>% 
+                mutate(GO = factor(paste(GO, term), levels = GOData$GO)) %>% 
                 group_by(GO) %>%
                 plot_ly(x = ~ MutationNum,
                         text = ~paste('sumScore: ', round(avg_sumScore, 3),
