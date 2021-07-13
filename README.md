@@ -50,14 +50,14 @@ combine_ONTO_data("HomoSapiens")
 
 There are two ways to create a random sequences. First, we can maintain the original GC-contents and make the rest completely random. On the other hand, we can also create data that maintain amino acids and convert codons into only other synonymous codon. We will maintain the original length of the sequence in both ways.
 
-#### 1) Method 1\
+#### 1) Method 1
 The GC-contents are the same as the original data. (The function takes two arguments; a species name and a seed number.)
 
 ```{r eval=FALSE}
 createRandomSeq_GC("Scerevisiae", 1111)
 ```
 
-#### 2) Method 2\
+#### 2) Method 2
 The composition of amino acids is the same as the original data. (The function takes two arguments; species name and seed number.)
 
 ```{r eval=FALSE}
@@ -67,7 +67,7 @@ createRandomSeq_AA("Scerevisiae", 1111)
 
 ## 4. Draw a histogram by GO term
 
-#### 1) Compute robustness score means for GO term\
+#### 1) Compute robustness score means for GO term
 Before drawing a histogram, we must select the GO term(s) to be the main sample. Using the categorized data based on ontology, we can calculate the robustness score average for each GO group. According to the law of large numbers, we used only GO terms with more than 30 sequences. The result is saved in a CSV file.
 
 ```{r eval=FALSE}
@@ -78,7 +78,7 @@ To run this function  *scoremeanBGO.R*, another function is also needed.
 - subNmodi_scoreONTO.R : subset from the categorized score data and modify score to standardize them    
     
 
-#### 2) Draw a histogram\
+#### 2) Draw a histogram
 The function *draw_histoBGO.R* draws histograms when you pass the species and ontology arguments. This function draws three types of histograms: using the CSV file calculated above, it draws a histogram of all GOs in the top 10%, all GOs in the bottom 10%, and each GO in the top or bottom 10%. In addition, all of these histograms include multiple distributions of random, selected, and total distributions.
 
 ```{r eval=FALSE}
